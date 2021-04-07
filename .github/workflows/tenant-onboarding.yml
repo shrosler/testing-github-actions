@@ -35,7 +35,7 @@ jobs:
 #     - name: Execute Cloud Tests
 #       run: echo 'Resources were cleaned-up successfully'
 
-  tenant-onboarding-dev:
+  Development:
     environment: dev
     runs-on: ubuntu-latest
     steps:
@@ -47,8 +47,8 @@ jobs:
     - name: Execute Cloud Tests
       run: echo 'Resources were cleaned-up successfully'
       
-  tenant-onboarding-int:
-    needs: tenant-onboarding-dev
+  Integration:
+    needs: Development
     environment: int
     runs-on: ubuntu-latest
     steps:
@@ -60,8 +60,8 @@ jobs:
     - name: Execute Cloud Tests
       run: echo 'Resources were cleaned-up successfully'
 
-  tenant-onboarding-int:
-    needs: tenant-onboarding-dev
+  Staging:
+    needs: Integration
     environment: stg
     runs-on: ubuntu-latest
     steps:
