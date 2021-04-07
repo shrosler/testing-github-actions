@@ -19,6 +19,7 @@ jobs:
       run: echo "Tenant for customer was ${{ github.event.inputs.name }} Deployed"   
       
   execute-cloud-test:
+    needs: tenant-deployment
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +27,7 @@ jobs:
       run: echo "Cloud tests passed successfully"
       
   cleanup-resources:
+    needs: execute-cloud-test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
