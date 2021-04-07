@@ -11,25 +11,71 @@ on:
         required: true
 
 jobs:
-  tenant-deployment:
+#   tenant-deployment:
+#     environment: dev
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Tenant Deployment
+#       run: echo "Tenant for customer was ${{ github.event.inputs.name }} Deployed"   
+      
+#   execute-cloud-test:
+#     needs: tenant-deployment
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Execute Cloud Tests
+#       run: echo "Cloud tests passed successfully"
+      
+#   cleanup-resources:
+#     needs: execute-cloud-test
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Execute Cloud Tests
+#       run: echo 'Resources were cleaned-up successfully'
+
+  tenant-onboarding-dev:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Tenant Deployment
       run: echo "Tenant for customer was ${{ github.event.inputs.name }} Deployed"   
-      
-  execute-cloud-test:
-    needs: tenant-deployment
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
     - name: Execute Cloud Tests
       run: echo "Cloud tests passed successfully"
+    - name: Execute Cloud Tests
+      run: echo 'Resources were cleaned-up successfully'
       
-  cleanup-resources:
-    needs: execute-cloud-test
+  tenant-onboarding-int:
+    environment: int
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Tenant Deployment
+      run: echo "Tenant for customer was ${{ github.event.inputs.name }} Deployed"   
+    - name: Execute Cloud Tests
+      run: echo "Cloud tests passed successfully"
     - name: Execute Cloud Tests
       run: echo 'Resources were cleaned-up successfully'
+
+  tenant-onboarding-stg:
+    environment: stg
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Tenant Deployment
+      run: echo "Tenant for customer was ${{ github.event.inputs.name }} Deployed"   
+    - name: Execute Cloud Tests
+      run: echo "Cloud tests passed successfully"
+    - name: Execute Cloud Tests
+      run: echo 'Resources were cleaned-up successfully'
+
+
+
+
+
+
+
+
+
